@@ -111,7 +111,7 @@ def show_star_info(star_name, star_info):
     print(MIDDLE_BORDER)
     
     # 打印生日区间
-    birthday = star_info.get("birthday", "未知")
+    birthday = star_info.get("birthday_range", "未知")
     print_centered(f"📅 生日区间: {birthday}", color=COLOR_WHITE)
     print(MIDDLE_BORDER)
     
@@ -121,12 +121,12 @@ def show_star_info(star_name, star_info):
     print(MIDDLE_BORDER)
     
     # 分模块展示：桃花
-    love = star_info.get("love", "暂无数据")
+    love = star_info.get("love_luck", "暂无数据")
     print_section("桃花运势", love, COLOR_PINK, COLOR_WHITE)
     print(MIDDLE_BORDER)
     
     # 分模块展示：财运
-    wealth = star_info.get("wealth", "暂无数据")
+    wealth = star_info.get("wealth_luck", "暂无数据")
     print_section("财运指数", wealth, COLOR_GREEN, COLOR_WHITE)
     
     print(BOTTOM_BORDER + "\n")
