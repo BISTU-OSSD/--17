@@ -4,6 +4,7 @@
 存储十二星座生日区间、桃花、性格、财运信息
 提供统一读取接口 get_all_star_info()
 开发分支：feature/data
+
 """
 
 def get_all_star_info():
