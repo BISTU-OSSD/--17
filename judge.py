@@ -20,18 +20,19 @@ def get_constellation(month: int, day: int) -> str:
         (11, 23, "射手座"),
         (12, 22, "摩羯座")
     ]
-
-    # 遍历匹配正确星座，修复原索引-1崩溃、Pylance语法报错问题
-    for idx, (m, d, name) in enumerate(constell_cutoff):
-        if month < m:
-            continue
-        if month == m and day < d:
-            # 1月上一个星座是摩羯座，避免负数索引
+    birth = (month, day)
+    # 遍历所有分界
+    for cut_month, cut_day, star_name in constell_cutoff:
+        cutoff = (cut_month, cut_day)
+        # 生日小于当前分界，说明属于上一个星座
+        if birth < cutoff:
+            idx = constell_cutoff.index((cut_month, cut_day, star_name))
+            # 1月分界前面是摩羯座
             if idx == 0:
-                return constell_cutoff[-1][2]
+                return "摩羯座"
             return constell_cutoff[idx - 1][2]
-    # 12月下旬固定返回摩羯座
-    return constell_cutoff[-1][2]
+    # 所有分界都比生日小，代表12.22之后，摩羯座
+    return "摩羯座"
 
 
 def check_birth_input(month_input, day_input):
